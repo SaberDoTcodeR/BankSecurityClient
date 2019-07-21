@@ -1,0 +1,276 @@
+@font-face {
+    font-family: 'Crushed';
+    src: url('Crushed-Regular.ttf');
+}
+
+.root {
+    -fx-font-size: 24pt;
+    -fx-font-family: Crushed;
+    -fx-background-image: url("counterplay-games-aestarispark.jpg");
+    -fx-background-size: stretch;
+}
+
+#text {
+    -fx-text-fill: black;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-border-radius: 15 15 15 15;
+    -fx-prompt-text-fill: black;
+    -fx-text-alignment: center;
+    -fx-background-radius: 15 15 15 15;
+
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+
+}
+
+.button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+}
+
+
+.button:focused {
+    -fx-background-color: rgba(187, 64, 27, 0.8);
+    -fx-text-fill: black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+}
+
+#button1:focused {
+    -fx-graphic: url("heroBlack.png");
+}
+
+#button2:focused {
+    -fx-graphic: url("minionBlack.png");
+}
+
+#button3:focused {
+    -fx-graphic: url("spellBlack.png");
+}
+
+#button4:focused {
+    -fx-graphic: url("itemBlack.png");
+}
+
+#auction:focused {
+    -fx-graphic: url("auction.png");
+}
+#button-add:focused {
+    -fx-graphic: url("addBlack.png");
+
+}
+
+#create-button:focused {
+    -fx-graphic: url("createBlack.png");
+}
+
+#delete-button:focused {
+    -fx-graphic: url("deleteBlack.png");
+}
+
+#cross-button:focused {
+    -fx-graphic: url("crossBlack.png");
+}
+#button-mainmenu:focused {
+    -fx-graphic: url("mainMenuBlack.png");
+}
+#button-EX:focused {
+    -fx-graphic: url("exportBlack.png");
+}
+#button-IM:focused {
+    -fx-graphic: url("importBlack.png");
+}
+.combo-box {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20px;
+    -fx-prompt-text-fill: #ffffff;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-text-fill: #ffffff;;
+    -fx-font-size: 20px;
+
+
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+}
+
+.combo-box-popup > .list-view {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #ffffff;;
+    -fx-font-size: 20px;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+}
+
+.combo-box-base {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #ffffff;;
+    -fx-font-size: 20px;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+}
+
+#wrongPassword {
+    -fx-text-fill: black;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-border-radius: 15 15 15 15;
+    -fx-prompt-text-fill: black;
+    -fx-text-alignment: center;
+    -fx-background-radius: 15 15 15 15;
+    -fx-background-image: url('wrong.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
+}
+
+.button:pressed {
+    -fx-background-color: rgba(187, 64, 27, 0.8);
+    -fx-translate-y: 4px;
+    -fx-text-fill: black;
+}
+
+#label-deck {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18pt;
+    -fx-font-family: Crushed;
+
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12pt;
+    -fx-font-family: Crushed;
+
+}
+
+.dialog-button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+}
+
+.dialog-button:hover {
+    -fx-background-color: rgba(187, 64, 27, 0.8);
+    -fx-text-fill: black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+}
+
+#boxNotBoughtStyle {
+
+    -fx-border-width: 2, 1;
+    -fx-border-style: solid;
+    -fx-border-color: #B63750;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 15 15 15 15;
+
+}
+
+#boxBoughtStyle {
+
+    -fx-border-width: 2, 1;
+    -fx-border-style: solid;
+    -fx-border-color: #4bb639;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 15 15 15 15;
+
+}
+
+#boxPendingBoughtStyle {
+
+    -fx-border-width: 2, 1;
+    -fx-border-style: solid;
+    -fx-border-color: #f5e83d;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 15 15 15 15;
+
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-radius: 5 5 5 5;
+}
+
+
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-border-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-radius: 5 5 5 5;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-border-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-radius: 5 5 5 5;
+
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: derive(black, 90.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 5 5 5 5;
+
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: derive(#2a292c, 10.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 5 5 5 5;
+}
+
+.scroll-bar:horizontal .thumb:pressed,
+.scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: derive(#2a292c, 10.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 5 5 5 5;
+
+}

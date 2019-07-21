@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'Crushed';
+    src: url('Crushed-Regular.ttf');
+}
+
+.root {
+    -fx-font-size: 24pt;
+    -fx-font-family: Crushed;
+    -fx-background-image: url("counterplay-games-obsidianwoods-mainmenu.jpg");
+    -fx-background-size: stretch;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+
+}
+
+.button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 24pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+}
+
+
+.button:focused {
+    -fx-background-color: rgba(181, 56, 80, 0.75);
+    -fx-text-fill: black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+
+}
+
+#button1:focused {
+    -fx-graphic: url("startGameBlack.png");
+}
+
+#button2:focused {
+    -fx-graphic: url("recordBlack.png");
+}
+
+#button3:focused {
+    -fx-graphic: url("shopBlack.png");
+}
+
+#button4:focused {
+    -fx-graphic: url("collectionBlack.png");
+}
+
+#button5:focused {
+    -fx-graphic: url("saveBlack.png");
+}
+
+#button6:focused {
+    -fx-graphic: url("logoutBlack.png");
+}
+
+.button:pressed {
+    -fx-background-color: rgba(181, 56, 80, 0.75);
+    -fx-translate-y: 4px;
+    -fx-text-fill: black;
+}
+
+
+.label {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+
+}
+
+#boxNotBoughtStyle {
+
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+
+}

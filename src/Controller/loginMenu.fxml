@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <TextField fx:id="userField" onKeyPressed="#handleOnKeyPressedUser" prefHeight="50.0" prefWidth="300.0"
+                   promptText="        UserName..."  GridPane.rowIndex="1">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets right="20" left="20"/>
+            </GridPane.margin>
+
+        </TextField>
+        <PasswordField fx:id="passField" onKeyPressed="#handleOnKeyPressedPass" prefHeight="50.0" prefWidth="300.0"
+                       promptText="        PassWord..."  GridPane.rowIndex="2">
+            <font>
+                <Font size="23.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets right="20" left="20"/>
+            </GridPane.margin>
+
+        </PasswordField>
+        <Button id="button1" fx:id="loginBtn" mnemonicParsing="false" onKeyPressed="#handleOnKeyPressedLogin"
+                onMouseClicked="#loginBtnAct" onMouseEntered="#loginBtnActFocus" prefHeight="50.0" prefWidth="400.0"
+                style="-fx-background-insets: 2 2 2 2; -fx-background-radius: 15 15 15 15;" text="LOGIN"
+                 GridPane.rowIndex="3">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets right="20" left="20"/>
+            </GridPane.margin>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="Controller/css/loginWhite.png"/>
+                    </image>
+
+                </ImageView>
+            </graphic>
+
+        </Button>
+        <Button id="button2" fx:id="signUpBtn" mnemonicParsing="false" onKeyPressed="#handleOnKeyPressedSignUp"
+                onMouseClicked="#signUpBtnAct" onMouseEntered="#signUpBtnActFocus" prefHeight="50.0" prefWidth="400.0"
+                text="SIGN UP"  GridPane.rowIndex="4">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets right="20" left="20"/>
+            </GridPane.margin>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="Controller/css/signupWhite.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+
+        </Button>
+
+        <Button id="button3" fx:id="exitButton" defaultButton="true" mnemonicParsing="false"
+                onKeyPressed="#handleOnKeyPressedExit" onMouseClicked="#exitGameBtn" onMouseEntered="#exitBtnActFocus"
+                prefHeight="50.0" prefWidth="400.0" text="EXIT GAME"  GridPane.rowIndex="5">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets right="20" left="20"/>
+            </GridPane.margin>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="Controller/css/exitWhite.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+
+        </Button>
+    </children>
+</GridPane>

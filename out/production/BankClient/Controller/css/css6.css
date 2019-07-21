@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'Crushed';
+    src: url('Crushed-Regular.ttf');
+}
+
+.root {
+    -fx-font-size: 24pt;
+    -fx-font-family: Crushed;
+    -fx-background-image: url("battlemap6_middleground.png");
+    -fx-background-size: stretch;
+}
+
+.button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #c4c4c4;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+}
+
+#label-account {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+}
+
+#tile {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-background-insets: 1 1 1 1;
+    -fx-background-radius: 15 15 15 15;
+}
+
+#tile:hover {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+    -fx-background-insets: 1 1 1 1;
+    -fx-background-radius: 15 15 15 15;
+}
+
+#tileWhite {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-insets: 1 1 1 1;
+    -fx-background-radius: 15 15 15 15;
+}
+
+.button:focused {
+    -fx-background-color: #8F5681;
+    -fx-text-fill: black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+
+}
+
+
+#button1:focused {
+    -fx-graphic: url("singleBlack.png");
+}
+
+#button2:focused {
+    -fx-graphic: url("multiBlack.png");
+}
+
+#button3:focused {
+    -fx-graphic: url("mainMenuBlack.png");
+}
+
+#button4:focused {
+    -fx-graphic: url("1Black.png");
+}
+
+#button5:focused {
+    -fx-graphic: url("2Black.png");
+}
+
+#button6:focused {
+    -fx-graphic: url("3Black.png");
+}
+
+.button:pressed {
+    -fx-background-color: #8F5681;
+    -fx-translate-y: 4px;
+    -fx-text-fill: black;
+}
+
+.dialog-button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+}
+
+.dialog-button:hover {
+    -fx-background-color: rgba(13, 254, 221, 0.8);
+    -fx-text-fill: black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+}
+.label3 {
+    -fx-font-size: 14pt;
+    -fx-font-family: Crushed;
+    -fx-text-fill: black;
+}
+
+#end-turn:hover {
+    -fx-image: url("button_end_turn_mine_glow.png");
+    -fx-alignment: center;
+}
+
+#end-turn {
+    -fx-image: url("button_end_turn_mine.png");
+    -fx-alignment: center;
+}
+
+#show-log:hover {
+    -fx-image: url("button_primary_right_glow.png");
+    -fx-alignment: center;
+}
+
+#show-log {
+    -fx-image: url("button_primary_right.png");
+    -fx-alignment: center;
+}
+
+#main-menu:hover {
+    -fx-image: url("button_primary_left_glow.png");
+    -fx-alignment: center;
+}
+
+#main-menu {
+    -fx-image: url("button_primary_left.png");
+    -fx-alignment: center;
+}
+
+#menu-text {
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+}
+#show-log-text {
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+}
+
+#next-turn-text {
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffffff;
+}
