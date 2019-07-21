@@ -9,6 +9,7 @@ import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class View {
 
     public static void makeLoginScene() {
         Platform.runLater(() -> {
-            GridPane root = null;
+            StackPane root = null;
             try {
                 root = FXMLLoader.load(LoginController.class.getResource("loginMenu.fxml"));
             } catch (IOException e) {
@@ -37,7 +38,7 @@ public class View {
     }
     public static void makeMainMenuScene() {
         Platform.runLater(() -> {
-            GridPane root = null;
+            StackPane root = null;
             try {
                 root = FXMLLoader.load(LoginController.class.getResource("mainMenu.fxml"));
             } catch (IOException e) {
@@ -46,7 +47,7 @@ public class View {
             scene.setRoot(root);
             scene.setCursor(new ImageCursor(new Image("Controller/css/OzFOdVG.png")));
             scene.getStylesheets().clear();
-            scene.getStylesheets().add(LoginController.class.getResource("css/css.css").toExternalForm());
+            scene.getStylesheets().add(LoginController.class.getResource("css/css2.css").toExternalForm());
             Stage primaryStage1 = Main.getPrimaryStage();
             primaryStage1.setScene(scene);
             primaryStage1.setResizable(true);

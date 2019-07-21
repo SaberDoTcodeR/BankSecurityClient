@@ -6,19 +6,19 @@
 .root {
     -fx-font-size: 24pt;
     -fx-font-family: Crushed;
-    -fx-background-image: url("counterplay-games-obsidianwoods-mainmenu.jpg");
+    -fx-background-image: url("photo_2019-07-21_12-47-42.jpg");
     -fx-background-size: stretch;
 }
+#text {
+    -fx-text-fill: black;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-border-radius: 15 15 15 15;
+    -fx-prompt-text-fill: black;
+    -fx-text-alignment: center;
+    -fx-background-radius: 15 15 15 15;
 
-.scroll-pane > .viewport {
-    -fx-background-color: transparent;
 }
-
-.scroll-pane {
-    -fx-background-color: transparent;
-
-}
-
 .button {
     -fx-border-color: transparent;
     -fx-border-width: 0;
@@ -42,8 +42,9 @@
 }
 
 #button1:focused {
-    -fx-graphic: url("startGameBlack.png");
+    -fx-graphic: url("balanceBlack.png");
 }
+/*
 
 #button2:focused {
     -fx-graphic: url("recordBlack.png");
@@ -64,6 +65,7 @@
 #button6:focused {
     -fx-graphic: url("logoutBlack.png");
 }
+*/
 
 .button:pressed {
     -fx-background-color: rgba(181, 56, 80, 0.75);
@@ -71,24 +73,3 @@
     -fx-text-fill: black;
 }
 
-
-.label {
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-color: rgba(0, 0, 0, 0.6);
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 20pt;
-    -fx-font-family: Crushed;
-    -fx-background-insets: 2 2 2 2;
-    -fx-background-radius: 15 15 15 15;
-
-}
-
-#boxNotBoughtStyle {
-
-    -fx-border-width: 1, 1;
-    -fx-border-style: solid;
-    -fx-border-insets: 2 2 2 2;
-    -fx-border-radius: 15 15 15 15;
-
-}

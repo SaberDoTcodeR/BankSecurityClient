@@ -24,6 +24,7 @@ public class Dictionary {
         dictionary.random_key = Connection.generateRandomKey(10);
         return dictionary;
     }
+
     public static Dictionary loginDict(String username, String password) {
         Dictionary dictionary = new Dictionary();
         dictionary.function = "2";
@@ -34,5 +35,12 @@ public class Dictionary {
         return dictionary;
     }
 
+    public static Dictionary balanceDict() {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "3";
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
 }
 

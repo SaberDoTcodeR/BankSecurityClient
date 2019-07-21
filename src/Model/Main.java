@@ -27,7 +27,7 @@ public class Main extends Application {
         RSAPrivateKey pr = ((RSAPrivateKey) kp.getPrivate());
         Key pvt = kp.getPrivate();
         System.out.println("public key : " + pub.toString());
-        Connection.n = getN(pub.toString());
+        Connection.n = RSA.getN(pub.toString());
         Connection.d = pr.getPrivateExponent();
         Connection.serverToClientRSA = new RSA(Connection.n, Connection.d); // for receiving from server
         Socket socket = new Socket("localhost", 55555);
@@ -39,11 +39,7 @@ public class Main extends Application {
         new Connection(socket);
     }
 
-    public static BigInteger getN(String pubKey) {
-        int modulus = pubKey.indexOf("modulus");
-        String num = pubKey.substring(modulus + 9, pubKey.indexOf("public exponent") - 3);
-        return new BigInteger(num);
-    }
+
 
     public static void main(String[] args) {
         launch(args);

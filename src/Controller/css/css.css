@@ -2,6 +2,16 @@
     font-family: 'Crushed';
     src: url('Crushed-Regular.ttf');
 }
+#text {
+    -fx-text-fill: black;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-border-radius: 15 15 15 15;
+    -fx-prompt-text-fill: black;
+    -fx-text-alignment: center;
+    -fx-background-radius: 15 15 15 15;
+
+}
 
 .root {
     -fx-font-size: 24pt;
@@ -69,9 +79,6 @@
 
 #button3:focused {
     -fx-graphic: url("exitBlack.png");
-}
-#button4:focused {
-    -fx-graphic: url("scoreboardBlack.png");
 }
 
 .button:pressed {
