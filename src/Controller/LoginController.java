@@ -2,10 +2,7 @@ package Controller;
 
 import Model.Connection;
 import Model.Dictionary;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -13,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 
 public class LoginController {
 
@@ -174,6 +174,32 @@ public class LoginController {
         });
 
 
+    }
+
+    public void showWaitDialog() {
+        Platform.runLater(() -> {
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("OK");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.4);");
+            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        jfxDialog.close();
+                    }
+            );
+            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            VBox vBox = new VBox();
+
+            ImageView imageView = new ImageView(new Image("Controller/css/31-512.png"));
+            vBox.getChildren().addAll(imageView);
+            jfxDialogLayout.getBody().add(vBox);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialog.show();
+            gridPane.setEffect(blur);
+        });
     }
 }
 

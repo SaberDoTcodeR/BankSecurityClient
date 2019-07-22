@@ -14,6 +14,7 @@ import java.security.interfaces.RSAPrivateKey;
 
 public class Main extends Application {
     private static Stage primaryStage1;
+    public static Main main;
 
     public static Stage getPrimaryStage() {
         return primaryStage1;
@@ -21,6 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        main = this;
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
         kpg.initialize(2048);
         KeyPair kp = kpg.generateKeyPair();
@@ -32,7 +34,7 @@ public class Main extends Application {
         Connection.serverToClientRSA = new RSA(Connection.n, Connection.d); // for receiving from server
         while (true) {
             try {
-                Socket socket = new Socket("localhost", 55555);
+                Socket socket = new Socket("192.168.43.157", 55555);
                 new Connection(socket);
                 break;
             } catch (IOException e2) {

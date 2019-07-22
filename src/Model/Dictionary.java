@@ -115,5 +115,13 @@ public class Dictionary {
         dictionary.random_key = Connection.generateRandomKey(10);
         return dictionary;
     }
+
+    public static Dictionary logoutDict() {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "13";
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
 }
 

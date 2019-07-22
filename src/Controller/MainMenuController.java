@@ -2,7 +2,6 @@ package Controller;
 
 import Model.Connection;
 import Model.Dictionary;
-import Model.RSA;
 import View.View;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -11,7 +10,6 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import com.google.gson.Gson;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
@@ -21,14 +19,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
-import java.net.Socket;
-import java.security.Key;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.interfaces.RSAPrivateKey;
 
 public class MainMenuController {
     private static MainMenuController mainMenuController;
@@ -72,37 +62,7 @@ public class MainMenuController {
     public void logOutBtnAct() {
         Dictionary.myAccountNumber = "";
         Dictionary.myUserName = "";
-
-        try {
-            Connection.getConnectionToServer().outputStream.close();
-            Connection.getConnectionToServer().inputStream.close();
-            Connection.getConnectionToServer().socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        KeyPairGenerator kpg = null;
-        try {
-            kpg = KeyPairGenerator.getInstance("RSA");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        kpg.initialize(2048);
-        KeyPair kp = kpg.generateKeyPair();
-        Key pub = kp.getPublic();
-        RSAPrivateKey pr = ((RSAPrivateKey) kp.getPrivate());
-        Key pvt = kp.getPrivate();
-        Connection.n = RSA.getN(pub.toString());
-        Connection.d = pr.getPrivateExponent();
-        Connection.serverToClientRSA = new RSA(Connection.n, Connection.d); // for receiving from server
-        while (true) {
-            try {
-                Socket socket = new Socket("localhost", 55555);
-                new Connection(socket);
-                break;
-            } catch (IOException e2) {
-            }
-        }
-
+        Connection.getConnectionToServer().send(Dictionary.logoutDict());
         View.makeLoginScene();
     }
 
@@ -400,7 +360,11 @@ public class MainMenuController {
             accept.getStyleClass().add("dialog-button");
             decline.getStyleClass().add("dialog-button");
             accept.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                        Connection.getConnectionToServer().send(Dictionary.transferRequestDict(transferDic.money, transferDic.account_number));
+                        Connection.getConnectionToServer().send(Dictionary.transferDict(transferDic.money, transferDic.account_number));
+                        jfxDialog.close();
+                    }
+            );
+            decline.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
                         jfxDialog.close();
                     }
             );
