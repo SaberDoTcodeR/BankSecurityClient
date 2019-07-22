@@ -24,7 +24,7 @@
     -fx-border-width: 0;
     -fx-background-color: rgba(0, 0, 0, 0.4);
     -fx-text-fill: #ffffff;
-    -fx-font-size: 24pt;
+    -fx-font-size: 16pt;
     -fx-font-family: Crushed;
     -fx-background-insets: 2 2 2 2;
     -fx-background-radius: 15 15 15 15;
@@ -62,11 +62,11 @@
     -fx-graphic: url("saveBlack.png");
 }
 
-#button6:focused {
+
+*/
+#button9:focused {
     -fx-graphic: url("logoutBlack.png");
 }
-*/
-
 .button:pressed {
     -fx-background-color: rgba(181, 56, 80, 0.75);
     -fx-translate-y: 4px;

@@ -24,96 +24,173 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
         </rowConstraints>
         <children>
-            <Button fx:id="startGame" id="button1" onMouseEntered="#balanceBtnActFocus"
-                    onKeyPressed="#handleOnKeyPressedBalance" onMouseClicked="#balanceAct"
-                    mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" text="BALANCE"
-                    GridPane.rowIndex="1">
+            <GridPane prefHeight="400.0" prefWidth="600.0" GridPane.rowIndex="1">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                </rowConstraints>
+                <children>
+                    <Button fx:id="balance" id="button1" onMouseEntered="#balanceBtnActFocus"
+                            onKeyPressed="#handleOnKeyPressedBalance" onMouseClicked="#balanceAct"
+                            mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" text="BALANCE">
 
-                <graphic>
-                    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="Controller/css/balanceWhite.png"/>
-                        </image>
-                    </ImageView>
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="Controller/css/balanceWhite.png"/>
+                                </image>
+                            </ImageView>
 
-                </graphic>
-            </Button>
-            <Button fx:id="recordedMatch" id="button2" onKeyPressed="#handleOnKeyPressedRecordedMatch"
-                    onMouseClicked="#recordedMatchAct" onMouseEntered="#recordedMatchBtnActFocus"
-                    mnemonicParsing="false"
-                    prefHeight="50.0" prefWidth="400.0" text="RECORDED MATCH"
-                    GridPane.rowIndex="2">
-                <graphic>
-                    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <!--<Image url="Controller/css/recordWhite.png"/>-->
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
-            <Button fx:id="shop" id="button3" onMouseEntered="#shopBtnActFocus" onKeyPressed="#handleOnKeyPressedShop"
-                    onMouseClicked="#shopAct" mnemonicParsing="false" prefHeight="50.0"
-                    prefWidth="400.0" text="SHOP"
-                    GridPane.rowIndex="3">
-                <graphic>
-                    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <!--<Image url="Controller/css/shopWhite.png"/>-->
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
-            <Button fx:id="collection" onKeyPressed="#handleOnKeyPressedCollection"
-                    onMouseClicked="#collectionAct" id="button4" onMouseEntered="#collectionBtnActFocus"
-                    mnemonicParsing="false"
-                    prefHeight="50.0"
-                    prefWidth="400.0" text="COLLECTION"
-                    GridPane.rowIndex="4">
-                <graphic>
-                    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <!-- <Image url="Controller/css/collectionWhite.png"/>-->
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
-            <Button fx:id="save" onMouseClicked="#saveBtnAct" id="button5" onMouseEntered="#saveBtnActFocus"
+                        </graphic>
+                    </Button>
+                    <Button fx:id="transfer" id="button2" onKeyPressed="#handleOnKeyPressedTransfer"
+                            onMouseClicked="#transferAct" onMouseEntered="#transferBtnActFocus"
+                            mnemonicParsing="false"
+                            prefHeight="50.0" prefWidth="400.0" text="TRANSFER" GridPane.columnIndex="1">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <!--<Image url="Controller/css/recordWhite.png"/>-->
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </children>
+            </GridPane>
+            <GridPane prefHeight="400.0" prefWidth="600.0" GridPane.rowIndex="2">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                </rowConstraints>
+                <children>
+                    <Button fx:id="deposit" id="button3" onMouseEntered="#depositBtnActFocus"
+                            onKeyPressed="#handleOnKeyPressedDeposit"
+                            onMouseClicked="#depositAct" mnemonicParsing="false" prefHeight="50.0"
+                            prefWidth="400.0" text="DEPOSIT">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <!--<Image url="Controller/css/shopWhite.png"/>-->
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="withdraw" onKeyPressed="#handleOnKeyPressedWithdraw"
+                            onMouseClicked="#withdrawAct" id="button4" onMouseEntered="#withdrawBtnActFocus"
+                            mnemonicParsing="false"
+                            prefHeight="50.0"
+                            prefWidth="400.0" text="WITHDRAW"
+                            GridPane.columnIndex="1">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <!-- <Image url="Controller/css/collectionWhite.png"/>-->
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </children>
+            </GridPane>
+            <GridPane prefHeight="400.0" prefWidth="600.0" GridPane.rowIndex="3">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                </rowConstraints>
+                <children>
+                    <Button fx:id="makeBill" onMouseClicked="#makeBillBtnAct" id="button5"
+                            onMouseEntered="#makeBillBtnActFocus"
+                            onKeyPressed="#handleOnKeyPressedMakeBill"
+                            mnemonicParsing="false" prefHeight="50.0"
+                            prefWidth="400.0" text="DEF BILL">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <!--<Image url="Controller/css/saveWhite.png"/>-->
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="payBill" onMouseClicked="#payBillAct" id="button6"
+                            onMouseEntered="#payBillBtnActFocus"
+                            onKeyPressed="#handleOnKeyPressedPayBill"
+                            prefHeight="50.0"
+                            prefWidth="400.0" text="PAY BILL"
+
+                            GridPane.columnIndex="1">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <!--<Image url="Controller/css/logoutWhite.png"/>-->
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </children>
+            </GridPane>
+            <GridPane prefHeight="400.0" prefWidth="600.0" GridPane.rowIndex="4">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                </rowConstraints>
+                <children>
+                    <Button fx:id="changePass" onMouseClicked="#changePassBtnAct" id="button7"
+                            onMouseEntered="#changePassBtnActFocus"
+                            onKeyPressed="#handleOnKeyPressedChangePass"
+                            mnemonicParsing="false" prefHeight="50.0"
+                            prefWidth="400.0" text="CHANGE PASS">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <!--<Image url="Controller/css/saveWhite.png"/>-->
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="transactions" onMouseClicked="#transactionsAct" id="button8"
+                            onMouseEntered="#transactionsBtnActFocus"
+                            onKeyPressed="#handleOnKeyPressedTransactions"
+                            prefHeight="50.0"
+                            prefWidth="400.0" text="TRANSACTIONS"
+
+                            GridPane.columnIndex="1">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <!--<Image url="Controller/css/logoutWhite.png"/>-->
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </children>
+            </GridPane>
+            <Button fx:id="logOut" onMouseClicked="#logOutBtnAct" id="button9"
+                    onMouseEntered="#logOutBtnActFocus"
                     onKeyPressed="#handleOnKeyPressedLogOut"
-                    mnemonicParsing="false" prefHeight="50.0"
-                    prefWidth="400.0" text="SAVE"
-                   
+                    prefHeight="50.0"
+                    prefWidth="400.0" text="LOGOUT"
                     GridPane.rowIndex="5">
                 <graphic>
                     <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                            <!--<Image url="Controller/css/saveWhite.png"/>-->
+                            <Image url="Controller/css/logoutWhite.png"/>
                         </image>
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="logOut" onMouseClicked="#logOutBtnAct" id="button6" onMouseEntered="#logOutBtnActFocus"
-                    onKeyPressed="#handleOnKeyPressedLogOut"
-                    prefHeight="50.0"
-                    prefWidth="400.0" text="LOGOUT"
-                   
-                    GridPane.rowIndex="6">
-                <graphic>
-                    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <!--<Image url="Controller/css/logoutWhite.png"/>-->
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
+            <Label fx:id="accountInfo"/>
 
-            <Label fx:id="accountInfo"  >
-                <!--<graphic>
-                    <ImageView fx:id="profile" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
-                               preserveRatio="true">
-
-                    </ImageView>
-                </graphic>-->
-            </Label>
         </children>
     </GridPane>
 </StackPane>

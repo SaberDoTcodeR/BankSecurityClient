@@ -4,6 +4,7 @@ import View.View;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.net.Socket;
 import java.security.Key;
@@ -26,19 +27,24 @@ public class Main extends Application {
         Key pub = kp.getPublic();
         RSAPrivateKey pr = ((RSAPrivateKey) kp.getPrivate());
         Key pvt = kp.getPrivate();
-        System.out.println("public key : " + pub.toString());
         Connection.n = RSA.getN(pub.toString());
         Connection.d = pr.getPrivateExponent();
         Connection.serverToClientRSA = new RSA(Connection.n, Connection.d); // for receiving from server
-        Socket socket = new Socket("localhost", 55555);
+        while (true) {
+            try {
+                Socket socket = new Socket("localhost", 55555);
+                new Connection(socket);
+                break;
+            } catch (IOException e2) {
+            }
+        }
         primaryStage1 = primaryStage;
         primaryStage1.setFullScreen(true);
         primaryStage1.setResizable(false);
         View.makeLoginScene();
         primaryStage1.show();
-        new Connection(socket);
-    }
 
+    }
 
 
     public static void main(String[] args) {

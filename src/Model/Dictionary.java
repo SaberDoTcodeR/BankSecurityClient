@@ -42,5 +42,78 @@ public class Dictionary {
         dictionary.random_key = Connection.generateRandomKey(10);
         return dictionary;
     }
+
+    public static Dictionary depositDict(String money) {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "9";
+        dictionary.money = money;
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
+
+    public static Dictionary withdrawDict(String money) {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "10";
+        dictionary.money = money;
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
+
+    public static Dictionary defBillDict(String money) {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "6";
+        dictionary.money = money;
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
+
+    public static Dictionary payBillDict(String bill_ID) {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "7";
+        dictionary.bill_ID = bill_ID;
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
+
+    public static Dictionary changePass(String old, String newPassword) {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "5";
+        dictionary.password = old;
+        dictionary.newpassword = newPassword;
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
+
+    public static Dictionary transactionsDict() {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "8";
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
+
+    public static Dictionary transferDict(String money, String accountNumber) {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "4";
+        dictionary.money = money;
+        dictionary.account_number = accountNumber;
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
+    public static Dictionary transferRequestDict(String money, String accountNumber) {
+        Dictionary dictionary = new Dictionary();
+        dictionary.function = "12";
+        dictionary.money = money;
+        dictionary.account_number = accountNumber;
+        dictionary.sign = Connection.sign;
+        dictionary.random_key = Connection.generateRandomKey(10);
+        return dictionary;
+    }
 }
 

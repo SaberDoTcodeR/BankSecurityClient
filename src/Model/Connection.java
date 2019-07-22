@@ -11,6 +11,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.net.Socket;
+import java.security.Key;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.interfaces.RSAPrivateKey;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -75,8 +80,11 @@ public class Connection extends Thread {
                 int x = str.split(" ").length;
                 Dictionary.myAccountNumber = str.split(" ")[x - 1];
                 View.makeMainMenuScene();
-            } else if (str.contains("logged In")) {
-
+            }else if (str.equals("256 admin logged in")) {
+                /////admin
+                View.makeMainMenuScene();
+            }
+            else if (str.contains("logged In with")) {
                 Dictionary.myUserName = str.split(" ")[0];
                 int x = str.split(" ").length;
                 Dictionary.myAccountNumber = str.split(" ")[x - 1];
@@ -89,8 +97,49 @@ public class Connection extends Thread {
                 int x = str.split(" ").length;
                 String money = str.split(" ")[x - 1];
                 MainMenuController.getInstance().showDialog("Your Account Balance is " + money + "$");
+            } else if (str.contains("deposit done")) {
+                int x = str.split(" ").length;
+                String money = str.split(" ")[x - 1];
+                MainMenuController.getInstance().showDialog("Successfully Deposited ,Your Account Balance is " + money + "$");
+            } else if (str.contains("withdraw done")) {
+                int x = str.split(" ").length;
+                String money = str.split(" ")[x - 1];
+                MainMenuController.getInstance().showDialog("Successfully withdraw ,Your Account Balance is " + money + "$");
+            } else if (str.contains("withdraw error")) {/// not needed should handled bye not enough money
+                MainMenuController.getInstance().showDialog("You Dont Have Enough Money To Do this Action");
+            } else if (str.equals("not enough money")) {
+                MainMenuController.getInstance().showDialog("You Dont Have Enough Money To Do this Action.");
+            } else if (str.contains("bill made with")) {
+                MainMenuController.getInstance().showDialog(str + "$");
+            } else if (str.equals("bill paid successfully")) {///////////////
+                MainMenuController.getInstance().showDialog("Bill Paid Successfully.");
+            } else if (str.equals("bill id not found")) {///////////////
+                MainMenuController.getInstance().showDialog("Bill ID Not Found.");
+            } else if (str.equals("password changed")) {
+                MainMenuController.getInstance().showDialog("PASSWORD CHANGED SUCCESSFULLY.");
+            } else if (str.equals("old password not correct")) {
+                MainMenuController.getInstance().showDialog("PASSWORD CHANGED SUCCESSFULLY.");
+            } else if (str.equals("no trans action")) {
+                MainMenuController.getInstance().showDialog("YOU HAVE NOT DONE ANY TRANSACTIONS YET.");
+            } else if (str.equals("error for transfer request")) {
+                MainMenuController.getInstance().showDialog("TRANSFER REQUEST FAILED.");
+            }
+            else if (str.equals("transfer done")) {
+                MainMenuController.getInstance().showDialog("TRANSFER DONE SUCCESSFULLY.");
+            }else if (str.equals("no account with this number")) {
+                MainMenuController.getInstance().showDialog("YOUR ENTERED ACCOUNT NUMBER IS NOT EXIST.");
+            }
+            else if (str.contains("You're Transferring")) {
+                MainMenuController.getInstance().showTransferDialog(str);
             }
 
+            else if (str.startsWith("224[")) {//how to recognise trans todo
+                str = str.replace("[", "");
+                str = str.replace("]", "");
+                str = str.replace("\"", "");
+                str = str.replace(",", "\n");
+                MainMenuController.getInstance().showDialog("TRANSACTIONS :\n" + str);
+            }
         }
     }
 
@@ -110,6 +159,7 @@ public class Connection extends Thread {
             outputStream = new PrintWriter(socket.getOutputStream());
             inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             connectionToServer = this;
+            System.out.println("asdad");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -133,6 +183,7 @@ public class Connection extends Thread {
         try {
             return inputStream.readLine();
         } catch (IOException e) {
+
         }
 
         return null;
