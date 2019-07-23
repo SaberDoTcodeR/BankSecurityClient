@@ -4,7 +4,6 @@ import Controller.LoginController;
 import Controller.MainMenuController;
 import View.View;
 import com.google.gson.Gson;
-import org.omg.PortableServer.THREAD_POLICY_ID;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,11 +11,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.net.Socket;
-import java.security.Key;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.interfaces.RSAPrivateKey;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -82,8 +76,8 @@ public class Connection extends Thread {
                     int x = str.split(" ").length;
                     Dictionary.myAccountNumber = str.split(" ")[x - 1];
                     View.makeMainMenuScene();
-                } else if (str.equals("256 admin logged in")) {
-                    /////admin
+                } else if (str.equals("256 admin logged In")) {
+                    MainMenuController.isAdmin = true;
                     View.makeMainMenuScene();
                 } else if (str.contains("logged In with")) {
                     Dictionary.myUserName = str.split(" ")[0];
@@ -97,7 +91,11 @@ public class Connection extends Thread {
                 } else if (str.contains(" has")) {
                     int x = str.split(" ").length;
                     String money = str.split(" ")[x - 1];
-                    MainMenuController.getInstance().showDialog("Your Account Balance is " + money + "$");
+                    if (!MainMenuController.getInstance().isAdmin)
+                        MainMenuController.getInstance().showDialog("Your Account Balance is " + money + "$");
+                    else {
+                        MainMenuController.getInstance().showDialog(str + "$");
+                    }
                 } else if (str.contains("deposit done")) {
                     int x = str.split(" ").length;
                     String money = str.split(" ")[x - 1];
@@ -143,7 +141,7 @@ public class Connection extends Thread {
 
             while (true) {
                 try {
-                    Socket socket = new Socket("192.168.43.157", 55555);
+                    Socket socket = new Socket(Main.host, 55555);
                     new Connection(socket);
                     break;
                 } catch (Exception e2) {
@@ -178,7 +176,6 @@ public class Connection extends Thread {
             outputStream = new PrintWriter(socket.getOutputStream());
             inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             connectionToServer = this;
-            System.out.println("asdad");
         } catch (IOException e) {
             e.printStackTrace();
         }

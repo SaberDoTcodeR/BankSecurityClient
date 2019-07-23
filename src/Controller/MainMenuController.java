@@ -3,15 +3,13 @@ package Controller;
 import Model.Connection;
 import Model.Dictionary;
 import View.View;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -22,6 +20,10 @@ import javafx.scene.layout.VBox;
 
 public class MainMenuController {
     private static MainMenuController mainMenuController;
+    public static boolean isAdmin = false;
+    public GridPane gridDepWith;
+    public GridPane gridBill;
+    public GridPane gridChangePass;
 
 
     public static MainMenuController getInstance() {
@@ -55,11 +57,22 @@ public class MainMenuController {
     @FXML
     public void initialize() {
         mainMenuController = this;
-        accountInfo.setText(Dictionary.myUserName + "\n" + "ACC-NUM :" + Dictionary.myAccountNumber);
+        if (isAdmin)
+            accountInfo.setText("ADMIN" + "\n");
+        else
+            accountInfo.setText(Dictionary.myUserName + "\n" + "ACC-NUM :" + Dictionary.myAccountNumber);
         accountInfo.setStyle("-fx-text-fill: #ffffff");
+        if (isAdmin) {
+            gridPane.getChildren().remove(logOut);
+            gridPane.getChildren().removeAll(gridDepWith, gridBill,gridChangePass);
+            gridChangePass.getChildren().remove(changePass);
+            gridChangePass.add(logOut,0,0);
+            gridPane.add(gridChangePass,0,2);
+        }
     }
 
     public void logOutBtnAct() {
+        isAdmin = false;
         Dictionary.myAccountNumber = "";
         Dictionary.myUserName = "";
         Connection.getConnectionToServer().send(Dictionary.logoutDict());
@@ -91,7 +104,10 @@ public class MainMenuController {
     }
 
     public void transactionsAct() {
-        Connection.getConnectionToServer().send(Dictionary.transactionsDict());
+        if (isAdmin) {
+            adminUserChooseDialog(Dictionary.transactionsDict());
+        } else
+            Connection.getConnectionToServer().send(Dictionary.transactionsDict());
     }
 
     public void changePassBtnAct() {
@@ -262,23 +278,34 @@ public class MainMenuController {
     private Dictionary transferDic;
 
     public void transferAct() {
+
         Platform.runLater(() -> {
             BoxBlur blur = new BoxBlur(5, 5, 10);
             JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
             JFXButton jfxButton = new JFXButton("OK");
+
+            JFXTextField fromAccountNumber = new JFXTextField();
             JFXTextField accountNumber = new JFXTextField();
             JFXTextField money = new JFXTextField();
+            fromAccountNumber.setPromptText("SRC ACC-NUM...");
             money.setPromptText("MONEY...");
+
             accountNumber.setPromptText("ACC-NUM...");
+            if (isAdmin)
+                accountNumber.setPromptText("DEST ACC-NUM...");
             money.setId("text");
+            fromAccountNumber.setId("text");
             accountNumber.setId("text");
             jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
             JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
             jfxButton.getStyleClass().add("dialog-button");
             jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                        if (!money.getText().equals("") && !accountNumber.getText().equals("") &&
-                                money.getText().matches("\\d+") && accountNumber.getText().matches("\\d+")) {
-                            transferDic = Dictionary.transferRequestDict(money.getText(), accountNumber.getText());
+                        if (!money.getText().equals("") && !accountNumber.getText().equals("") && (!fromAccountNumber.getText().equals("") || !isAdmin) &&
+                                money.getText().matches("\\d+") && accountNumber.getText().matches("\\d+")
+                                && (fromAccountNumber.getText().matches("\\d+") || !isAdmin)) {
+                            transferDic = Dictionary.transferDict(money.getText(), accountNumber.getText());
+                            if (isAdmin)
+                                transferDic.fromuser = fromAccountNumber.getText();
                             Connection.getConnectionToServer().send(transferDic);
                             jfxDialog.close();
                         } else if (money.getText().equals("") || !money.getText().matches("\\d+")) {
@@ -293,7 +320,7 @@ public class MainMenuController {
                 gridPane.setEffect(null);
             });
             VBox vBox = new VBox();
-            vBox.getChildren().addAll(money, accountNumber);
+            vBox.getChildren().addAll(money, accountNumber, fromAccountNumber);
             jfxDialogLayout.getBody().add(vBox);
             jfxDialogLayout.setActions(jfxButton);
             jfxDialog.show();
@@ -317,14 +344,56 @@ public class MainMenuController {
     }
 
     public void balanceAct() {
-        Connection.getConnectionToServer().send(Dictionary.balanceDict());
+        if (isAdmin) {
+            adminUserChooseDialog(Dictionary.balanceDict());
+        } else {
+            Connection.getConnectionToServer().send(Dictionary.balanceDict());
+        }
 
+    }
+
+    private void adminUserChooseDialog(Dictionary balanceDict) {
+        Platform.runLater(() -> {
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("OK");
+            JFXTextField jfxTextField = new JFXTextField();
+
+            jfxTextField.setPromptText("ENTER A USERNAME...");
+            jfxTextField.setId("text");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        if (!jfxTextField.getText().equals("")) {
+                            balanceDict.username = jfxTextField.getText();
+                            Connection.getConnectionToServer().send(balanceDict);
+
+                            jfxDialog.close();
+                        } else {
+                            jfxTextField.setId("wrongPassword");
+                        }
+
+                    }
+            );
+            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            VBox vBox = new VBox();
+            vBox.getChildren().addAll(jfxTextField);
+            jfxDialogLayout.getBody().add(vBox);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialog.show();
+            gridPane.setEffect(blur);
+        });
     }
 
     public void showDialog(String message) {
         Platform.runLater(() -> {
             BoxBlur blur = new BoxBlur(5, 5, 10);
             JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            ScrollPane scrollPane = new ScrollPane();
+
             JFXButton jfxButton = new JFXButton("OK");
             jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
             JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
@@ -340,7 +409,8 @@ public class MainMenuController {
             label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
             VBox vBox = new VBox();
             vBox.getChildren().addAll(label);
-            jfxDialogLayout.getBody().add(vBox);
+            scrollPane.setContent(vBox);
+            jfxDialogLayout.getBody().addAll(scrollPane);
             jfxDialogLayout.setActions(jfxButton);
             jfxDialog.show();
             gridPane.setEffect(blur);
@@ -361,6 +431,7 @@ public class MainMenuController {
             decline.getStyleClass().add("dialog-button");
             accept.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
                         Connection.getConnectionToServer().send(Dictionary.transferDict(transferDic.money, transferDic.account_number));
+
                         jfxDialog.close();
                     }
             );

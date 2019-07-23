@@ -31,7 +31,7 @@ public class View {
             scene.getStylesheets().add(LoginController.class.getResource("css/css.css").toExternalForm());
             Stage primaryStage1 = Main.getPrimaryStage();
             primaryStage1.setScene(scene);
-            primaryStage1.setResizable(false);
+            primaryStage1.setResizable(true);
             primaryStage1.setWidth(400);
             primaryStage1.setHeight(600);
         });
@@ -50,7 +50,7 @@ public class View {
             scene.getStylesheets().add(LoginController.class.getResource("css/css2.css").toExternalForm());
             Stage primaryStage1 = Main.getPrimaryStage();
             primaryStage1.setScene(scene);
-            primaryStage1.setResizable(false);
+            primaryStage1.setResizable(true);
             primaryStage1.setWidth(400);
             primaryStage1.setHeight(600);
         });
